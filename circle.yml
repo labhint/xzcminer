@@ -8,7 +8,7 @@ dependencies:
   override:
     - docker info
     - if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
-    - make docker_build
+    - make circle_build
     - mkdir -p ~/docker; docker save baseboxorg/cpuminer-xzc > ~/docker/image.tar
 
 
@@ -21,4 +21,4 @@ deployment:
     branch: master
     commands:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-      - make docker_push
+      - make circle_push
