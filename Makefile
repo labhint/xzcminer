@@ -49,7 +49,7 @@ endif
 
 docker_build:
 	# Build Docker image
-	docker build --rm=false \
+	docker build \
   --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
   --build-arg VERSION=$(CODE_VERSION) \
   --build-arg VCS_URL=`git config --get remote.origin.url` \
@@ -66,3 +66,11 @@ docker_push:
 
 output:
 	@echo Docker Image: $(DOCKER_IMAGE):$(DOCKER_TAG)
+	
+circle_build:
+	docker build --rm=false \
+	-t $(DOCKER_IMAGE) .
+
+circle_push:
+	# Push to DockerHub
+	docker push $(DOCKER_IMAGE)
