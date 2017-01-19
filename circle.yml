@@ -3,10 +3,19 @@ machine:
     - docker
 
 dependencies:
+  cache_directories:
+    - "~/docker"
   override:
     - docker info
+    - if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
     - make docker_build
+    - mkdir -p ~/docker; docker save baseboxorg/cpuminer-xzc > ~/docker/image.tar
 
+
+test:
+  override:
+    - docker run -d baseboxorg/cpuminer-xzc
+    
 deployment:
   hub:
     branch: master
