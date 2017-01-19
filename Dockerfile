@@ -1,20 +1,15 @@
-FROM alpine:3.3
+FROM ubuntu
 
-ENV GOPATH /home/go
-ENV PACKAGE github.com/sammy007/ether-proxy
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get -qq install \
+    automake autoconf pkg-config libcurl4-openssl-dev libjansson-dev libssl-dev libgmp-dev clang git make nano screen && \
+    rm -rf /var/lib/apt/lists/*
 
-RUN apk --update add -ut build-deps \
-    go \
-    git \
-    g++
+RUN git clone https://github.com/dockerhint/cpuminer-xzc.git /cpuminer && \
+    cd /cpuminer && \
+    ./build.sh
 
-RUN git clone https://$PACKAGE.git $GOPATH/src/$PACKAGE && \
-    cd $GOPATH/src/$PACKAGE && \
-    go get; exit 0 && \
-    go build -o /bin/ether-proxy -ldflags "-s" main.go
-
-RUN rm -rf $GOPATH && \
-    apk del --purge build-deps
+WORKDIR /cpuminer
 
 # Metadata params
 ARG BUILD_DATE
@@ -23,9 +18,9 @@ ARG VCS_URL
 ARG VCS_REF
 # Metadata
 LABEL org.label-schema.build-date=$BUILD_DATE \
-      org.label-schema.name="ether-proxy" \
-      org.label-schema.description="Running ether-proxy in docker container" \
-      org.label-schema.url="https://etherchain.org/" \
+      org.label-schema.name="cpuminer-xzc" \
+      org.label-schema.description="Running cpuminer-xzc in docker container" \
+      org.label-schema.url="https://xzc.org/" \
       org.label-schema.vcs-url=$VCS_URL \
       org.label-schema.vcs-ref=$VCS_REF \
       org.label-schema.vendor="AnyBucket" \
@@ -33,4 +28,7 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.schema-version="1.0" \
       com.microscaling.docker.dockerfile="/Dockerfile"
       
-ENTRYPOINT ["/bin/ether-proxy"]
+      
+ENTRYPOINT	["./cpuminer"]
+
+CMD ["--help"]
