@@ -1,5 +1,7 @@
 FROM ubuntu
 
+MAINTAINER Anybucket
+
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get -qq install \
     automake autoconf pkg-config libcurl4-openssl-dev libjansson-dev libssl-dev libgmp-dev clang git make nano screen && \
