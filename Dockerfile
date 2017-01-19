@@ -5,7 +5,7 @@ RUN apt-get update && \
     automake autoconf pkg-config libcurl4-openssl-dev libjansson-dev libssl-dev libgmp-dev clang git make nano screen && \
     rm -rf /var/lib/apt/lists/*
 
-RUN git clone https://github.com/dockerhint/cpuminer-xzc.git /cpuminer && \
+RUN git https://github.com/ocminer/cpuminer-xzc.git /cpuminer && \
     cd /cpuminer && \
     ./build.sh
 
