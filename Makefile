@@ -7,7 +7,7 @@ build: docker_build output
 release: docker_build docker_push output
 
 # Image and binary can be overidden with env vars.
-DOCKER_IMAGE ?= baseboxorg/ether-proxy
+DOCKER_IMAGE ?= baseboxorg/cpuminer-xzc
 
 # Get the latest commit.
 GIT_COMMIT = $(strip $(shell git rev-parse --short HEAD))
