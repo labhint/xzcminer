@@ -2,16 +2,15 @@ machine:
   services:
     - docker
 
-dependencies:
+dependencies:    
   cache_directories:
     - "~/docker"
   override:
     - docker info
     - if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
-    - make circle_build
+    - docker build --rm=false -t baseboxorg/cpuminer-xzc .
     - mkdir -p ~/docker; docker save baseboxorg/cpuminer-xzc > ~/docker/image.tar
-
-
+ 
 test:
   post:
     - docker run -d baseboxorg/cpuminer-xzc
@@ -21,4 +20,4 @@ deployment:
     branch: master
     commands:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-      - make circle_push
+      - docker push baseboxorg/cpuminer-xzc
