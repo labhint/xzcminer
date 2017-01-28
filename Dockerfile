@@ -18,18 +18,19 @@ RUN set -x && \
 	  #libcurl \
 	  #libssl1.0 \
 	  #libssl-dev \
-	  pkgconf \
-    pkgconfig \
-    gmp \
-	  build-base \
-	  curl-dev \
+	  #pkgconf \
+    	pkgconfig \
+    	gmp \
+	autoconf \
+	automake \
+		build-base \
+		curl-dev \
 	  #openssl \
 	#openssl-dev \
-    gcc \
 		clang \
     jansson \
-    jansson-dev \
-    
+    #jansson-dev \
+  
     #libtool \
     make \
 		git
@@ -45,7 +46,7 @@ RUN make clean || echo clean && \
     rm -f config.status
     
 RUN ./autogen.sh || echo done && \
-    ./configure CFLAGS="-O3 -march=native" --with-crypto --with-curl
+    ./configure CFLAGS="-march=native" --with-crypto --with-curl
  
 RUN make
     
