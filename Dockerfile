@@ -31,8 +31,14 @@ RUN git clone https://github.com/baseboxorg/cpuminer-xzc.git /cpuminer
 
 WORKDIR /cpuminer
 
-RUN ./build.sh && \
-    apk del .build-deps
+#RUN ./build.sh && \
+RUN make clean && \
+    rm -f config.status && \
+    ./autogen.sh && \
+    ./configure CFLAGS="-march=native" --with-crypto --with-curl && \
+    make
+    
+RUN apk del .build-deps
 
 ENTRYPOINT [ "./cpuminer" ]
 
