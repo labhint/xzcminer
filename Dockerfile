@@ -31,4 +31,11 @@ RUN git clone https://github.com/baseboxorg/cpuminer-xzc.git /cpuminer
 
 WORKDIR /cpuminer
 
+RUN ./build.sh && \
+    apk del .build-deps
+
+ENTRYPOINT [ "./cpuminer" ]
+
+CMD ["--help"]
+
 
