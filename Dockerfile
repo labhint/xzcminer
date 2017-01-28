@@ -9,8 +9,8 @@ RUN apk add --update --repository http://dl-cdn.alpinelinux.org/alpine/edge/comm
 		curl-dev \
 		#openssl \
 		#libressl
-		libressl2.4-libssl \
-		#libssl1.0 \
+		#libressl2.4-libssl \
+		libssl1.0 \
 		#openssl-dev \
 		jansson-dev \
 		gmp-dev
