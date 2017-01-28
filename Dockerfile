@@ -10,11 +10,16 @@ RUN git clone https://github.com/baseboxorg/cpuminer-xzc.git /cpuminer && \
     cd /cpuminer && \
     ./build.sh
     
- RUN apt-get remove -y automake autoconf pkg-config git make libcurl4-openssl-dev libjansson-dev libssl-dev libgmp-dev && \
-     apt-get autoremove -y && \
-     rm -rf /var/lib/apt/lists/*
+WORKDIR /cpuminer 
 
-WORKDIR /cpuminer
+RUN cp cpuminer /usr/local/bin/cpuminer && chmod a+x /usr/local/bin/*
+    
+RUN apt-get remove -y automake autoconf pkg-config git make libcurl4-openssl-dev libjansson-dev libssl-dev libgmp-dev && \
+     apt-get autoremove -y && \
+     rm -rf /var/lib/apt/lists/* && \
+     rm -rf /cpuminer
+
+
 
 # Metadata params
 ARG BUILD_DATE
@@ -34,6 +39,6 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       com.microscaling.docker.dockerfile="/Dockerfile"
       
       
-ENTRYPOINT	["./cpuminer"]
+ENTRYPOINT	["cpuminer"]
 
 CMD ["--help"]
