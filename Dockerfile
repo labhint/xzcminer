@@ -8,9 +8,9 @@ RUN apk add --update --repository http://dl-cdn.alpinelinux.org/alpine/edge/comm
 		ca-certificates \
 		curl-dev \
 		#openssl \
-		#libressl
+		libressl \
 		#libressl2.4-libssl \
-		libssl1.0 \
+		#libssl1.0 \
 		#openssl-dev \
 		jansson-dev \
 		gmp-dev
@@ -31,7 +31,7 @@ RUN set -x && \
 		#curl-dev \
 	  #openssl \
 	
-		clang \
+		#clang \
     #jansson \
     
   
@@ -49,7 +49,8 @@ WORKDIR /cpuminer
 RUN make clean || echo clean && \
     rm -f config.status
     
-RUN ./autogen.sh || echo done && \
+RUN export OBJECT_MODE=64 && \
+    ./autogen.sh || echo done && \
     ./configure CFLAGS="-march=native" --with-crypto --with-curl
  
 RUN make
