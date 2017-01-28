@@ -4,7 +4,7 @@ MAINTAINER Anybucket
 
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get -qq install \
-    curl openssl-dev automake autoconf pkg-config libcurl4-openssl-dev libjansson-dev libssl-dev libgmp-dev git make
+    curl libssl-dev automake autoconf pkg-config libcurl4-openssl-dev libjansson-dev libgmp-dev git make
 
 RUN git clone https://github.com/baseboxorg/cpuminer-xzc.git /cpuminer && \
     cd /cpuminer && \
@@ -14,7 +14,7 @@ WORKDIR /cpuminer
 
 RUN cp cpuminer /usr/local/bin/cpuminer && chmod a+x /usr/local/bin/*
     
-RUN apt-get remove -y automake autoconf pkg-config git make libcurl4-openssl-dev libjansson-dev libssl-dev libgmp-dev && \
+RUN apt-get remove -y automake autoconf pkg-config git make libcurl4-openssl-dev libjansson-dev libgmp-dev && \
      apt-get autoremove -y && \
      rm -rf /var/lib/apt/lists/* && \
      rm -rf /cpuminer
