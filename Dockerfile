@@ -19,26 +19,8 @@ RUN apt-get remove -y automake autoconf libssl-dev pkg-config git make && \
      rm -rf /var/lib/apt/lists/* && \
      rm -rf /cpuminer
 
-
-
-# Metadata params
-ARG BUILD_DATE
-ARG VERSION
-ARG VCS_URL
-ARG VCS_REF
-# Metadata
-LABEL org.label-schema.build-date=$BUILD_DATE \
-      org.label-schema.name="cpuminer-xzc" \
-      org.label-schema.description="Running cpuminer-xzc in docker container" \
-      org.label-schema.url="https://zcoin.tech/" \
-      org.label-schema.vcs-url=$VCS_URL \
-      org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.vendor="AnyBucket" \
-      org.label-schema.version=$VERSION \
-      org.label-schema.schema-version="1.0" \
-      com.microscaling.docker.dockerfile="/Dockerfile"
       
       
-ENTRYPOINT	["cpuminer"]
+ENTRYPOINT	["/usr/local/bin/cpuminer"]
 
 CMD ["--help"]
