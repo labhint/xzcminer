@@ -7,16 +7,17 @@ dependencies:
     - sudo apt-get update; sudo apt-get install -y openssl bash curl wget
     - wget https://github.com/aktau/github-release/releases/download/v0.6.2/linux-amd64-github-release.tar.bz2 -O - | tar -xjf - -C /tmp
     - sudo mv /tmp/bin/linux/amd64/github-release /usr/local/bin
-    - sudo rm -rf /tmp/*
     
-  #cache_directories:
-    #- "~/docker"
+    
+  cache_directories:
+    - "~/docker"
   override:
     - docker info
-   # - if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
+    - if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
     - docker build --rm=false -t baseboxorg/cpuminer-xzc:alpine .
-    #- mkdir -p ~/docker; docker save baseboxorg/cpuminer-xzc:alpine > ~/docker/image.tar
-
+    - mkdir -p ~/docker; docker save baseboxorg/cpuminer-xzc:alpine > ~/docker/image.tar
+  post:
+   - sudo rm -rf /tmp/linux-amd64-github-release.tar.bz2
 test:
   post:
     - docker run -d baseboxorg/cpuminer-xzc:alpine
