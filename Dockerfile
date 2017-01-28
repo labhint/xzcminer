@@ -6,10 +6,14 @@ MAINTAINER AnyBucket <anybucket@gmail.com>
 RUN apk add --update --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ tini docker && \
     apk add --no-cache \
 		ca-certificates \
-		curl \
+		curl-dev \
 		#openssl \
-		libressl
-		#libssl-dev
+		#libressl
+		libssl-dev \
+		openssl-dev \
+		jansson-dev \
+		gmp-dev \
+		
 
 RUN set -x && \
 		apk add --no-cache --virtual .build-deps \
@@ -19,17 +23,16 @@ RUN set -x && \
 	  #libssl1.0 \
 	  #libssl-dev \
 	  #pkgconf \
-    	pkgconfig \
-    	gmp \
+    	pkgconfig \	
 	autoconf \
 	automake \
 		build-base \
-		curl-dev \
+		#curl-dev \
 	  #openssl \
-	#openssl-dev \
+	
 		clang \
-    jansson \
-    #jansson-dev \
+    #jansson \
+    
   
     #libtool \
     make \
