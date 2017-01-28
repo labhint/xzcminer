@@ -3,8 +3,8 @@ FROM alpine:latest
 
 MAINTAINER AnyBucket <anybucket@gmail.com>
 
-RUN apk add --update --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ tini docker && \
-    apk add --no-cache \
+#RUN apk add --update --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ tini docker && \
+RUN . apk add --no-cache \
 		ca-certificates \
 		curl-dev \
 		#openssl \
