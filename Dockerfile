@@ -16,10 +16,12 @@ RUN set -x \
        gmp \
 	   build-base \
 	   curl-dev \
-        jansson \
-       libtool \
-       make \
-	   git \
+       	gcc \
+	clang \
+    	jansson \
+       	libtool \
+       	make \
+	git \
 	&& git clone https://github.com/baseboxorg/cpuminer-xzc.git /usr/src/cpuminer \
 	&& ( \
 	   cd /usr/src/cpuminer \
