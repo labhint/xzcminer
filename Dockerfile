@@ -17,6 +17,7 @@ RUN set -x && \
     gmp \
 	  build-base \
 	  curl-dev \
+	  openssl \
     gcc \
 		clang \
     jansson \
@@ -30,10 +31,4 @@ RUN git clone https://github.com/baseboxorg/cpuminer-xzc.git /cpuminer
 
 WORKDIR /cpuminer
 
-RUN cd /cpuminer && \
-    ./build.sh && \
-    apk del .build-deps
 
-ENTRYPOINT [ "./cpuminer" ]
-
-CMD ["--help"]
