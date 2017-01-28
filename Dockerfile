@@ -16,7 +16,7 @@ RUN set -x \
        gmp \
 	   build-base \
 	   curl-dev \
-        libjansson-dev \
+        jansson \
        libtool \
        make \
 	   git \
