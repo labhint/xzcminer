@@ -12,7 +12,7 @@ RUN apk add --update --repository http://dl-cdn.alpinelinux.org/alpine/edge/comm
 		libssl-dev \
 		openssl-dev \
 		jansson-dev \
-		gmp-dev \
+		gmp-dev
 		
 
 RUN set -x && \
