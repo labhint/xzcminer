@@ -14,7 +14,7 @@ WORKDIR /cpuminer
 
 RUN cp cpuminer /usr/local/bin/cpuminer && chmod a+x /usr/local/bin/*
     
-RUN apt-get remove -y automake autoconf pkg-config git make libcurl4-openssl-dev libjansson-dev libgmp-dev && \
+RUN apt-get remove -y automake autoconf libssl-dev pkg-config git make libjansson-dev libgmp-dev && \
      apt-get autoremove -y && \
      rm -rf /var/lib/apt/lists/* && \
      rm -rf /cpuminer
