@@ -1,4 +1,4 @@
-FROM baseboxorg/ubuntu-advance
+FROM baseboxorg/ubuntu-advance:16.04
 
 MAINTAINER Anybucket
 
