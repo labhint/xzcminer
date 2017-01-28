@@ -8,7 +8,7 @@ dependencies:
   override:
     - docker info
     - if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
-    - docker build --rm -t baseboxorg/cpuminer-xzc .
+    - docker build --rm=false -t baseboxorg/cpuminer-xzc .
     - mkdir -p ~/docker; docker save baseboxorg/cpuminer-xzc > ~/docker/image.tar
  
 test:
