@@ -7,7 +7,7 @@ RUN apk add --update --repository http://dl-cdn.alpinelinux.org/alpine/edge/comm
     apk add --no-cache \
 		ca-certificates \
 		curl \
-		openssl \
+		#openssl \
 		libressl
 		#libssl-dev
 
@@ -15,8 +15,8 @@ RUN set -x && \
 		apk add --no-cache --virtual .build-deps \
 	  autoconf \
 	  automake \
-	  libcurl \
-	  libssl1.0 \
+	  #libcurl \
+	  #libssl1.0 \
 	  #libssl-dev \
 	  pkgconf \
     pkgconfig \
@@ -30,7 +30,7 @@ RUN set -x && \
     jansson \
     jansson-dev \
     
-    libtool \
+    #libtool \
     make \
 		git
 
