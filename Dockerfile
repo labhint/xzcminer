@@ -10,8 +10,8 @@ RUN git clone https://github.com/baseboxorg/cpuminer-xzc.git /cpuminer && \
     cd /cpuminer && \
     ./build.sh
     
- RUN apt-get remove -qq automake autoconf pkg-config git make && \
-     apt-get autoremove -dd && \
+ RUN apt-get remove -y automake autoconf pkg-config git make libcurl4-openssl-dev libjansson-dev libgmp-dev && \
+     apt-get autoremove -y && \
      rm -rf /var/lib/apt/lists/*
 
 WORKDIR /cpuminer
