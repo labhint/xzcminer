@@ -9,12 +9,12 @@ dependencies:
     - docker info
     - if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
     - make circle_build
-    - mkdir -p ~/docker; docker save baseboxorg/cpuminer-xzc > ~/docker/image.tar
+    - mkdir -p ~/docker; docker save baseboxorg/cpuminer-xzc:alpine > ~/docker/image.tar
 
 
 test:
   post:
-    - docker run -d baseboxorg/cpuminer-xzc
+    - docker run -d baseboxorg/cpuminer-xzc:alpine
     
 deployment:
   hub:
