@@ -15,7 +15,7 @@ RUN set -x && \
 	  autoconf \
 	  automake \
 	  libcurl \
-	  libssl1.0 \
+	  #libssl1.0 \
 	  libssl-dev \
 	  pkgconf \
     pkgconfig \
@@ -23,7 +23,7 @@ RUN set -x && \
 	  build-base \
 	  curl-dev \
 	  openssl \
-	openssl-dev \
+	#openssl-dev \
     gcc \
 		clang \
     jansson \
