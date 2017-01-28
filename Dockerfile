@@ -4,7 +4,7 @@ MAINTAINER Anybucket
 
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get -qq install \
-    automake autoconf pkg-config libcurl4-openssl-dev libjansson-dev libssl-dev libgmp-dev clang git make nano screen && \
+    automake autoconf pkg-config libcurl4-openssl-dev libjansson-dev libssl-dev libgmp-dev git make && \
     rm -rf /var/lib/apt/lists/*
 
 RUN git clone https://github.com/baseboxorg/cpuminer-xzc.git /cpuminer && \
@@ -22,7 +22,7 @@ ARG VCS_REF
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.name="cpuminer-xzc" \
       org.label-schema.description="Running cpuminer-xzc in docker container" \
-      org.label-schema.url="https://xzc.org/" \
+      org.label-schema.url="https://zcoin.tech/" \
       org.label-schema.vcs-url=$VCS_URL \
       org.label-schema.vcs-ref=$VCS_REF \
       org.label-schema.vendor="AnyBucket" \
