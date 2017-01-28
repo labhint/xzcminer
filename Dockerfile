@@ -15,8 +15,8 @@ RUN set -x && \
 	  autoconf \
 	  automake \
 	  libcurl \
-	  #libssl1.0 \
-	  libssl-dev \
+	  libssl1.0 \
+	  #libssl-dev \
 	  pkgconf \
     pkgconfig \
     gmp \
