@@ -13,14 +13,20 @@ RUN set -x && \
 		apk add --no-cache --virtual .build-deps \
 	  autoconf \
 	  automake \
+	  libcurl \
+	  libssl1.0 \
+	  pkgconf \
     pkgconfig \
     gmp \
 	  build-base \
 	  curl-dev \
 	  openssl \
+	  openssl-dev \
     gcc \
 		clang \
     jansson \
+    jansson-dev \
+    
     libtool \
     make \
 		git
