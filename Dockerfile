@@ -1,10 +1,10 @@
-FROM resin/armv7hf-debian
+FROM resin/raspberrypi2-debian
 
 MAINTAINER Anybucket
 
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get -qq install \
-    curl clang libssl-dev automake autoconf pkg-config libcurl4-openssl-dev libjansson-dev libgmp-dev git make 
+    curl libssl-dev automake autoconf pkg-config libcurl4-openssl-dev libjansson-dev libgmp-dev git make 
 
 RUN git clone https://github.com/baseboxorg/cpuminer-xzc.git /cpuminer && \
     cd /cpuminer && \
