@@ -8,8 +8,11 @@ RUN apt-get update && \
 
 RUN git clone https://github.com/baseboxorg/cpuminer-xzc.git /cpuminer && \
     cd /cpuminer && \
-    ./build.sh
-
+    git checkout rpi2 && \
+    ./autogen.sh && \
+    ./configure CFLAGS="-march=native" --with-crypto --with-curl && \
+    make
+    
 RUN mv /cpuminer/cpuminer /usr/local/bin/cpuminer && chmod a+x /usr/local/bin/cpuminer
     
 RUN apt-get remove -y automake autoconf libssl-dev pkg-config git make && \
