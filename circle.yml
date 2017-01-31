@@ -8,16 +8,16 @@ dependencies:
   override:
     - docker info
     - if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
-    - docker build --rm=false -t baseboxorg/cpuminer-xzc .
-    - mkdir -p ~/docker; docker save baseboxorg/cpuminer-xzc > ~/docker/image.tar
+    - docker build --rm=false -t baseboxorg/cpuminer-xzc:rpi2 .
+    - mkdir -p ~/docker; docker save baseboxorg/cpuminer-xzc:rpi2 > ~/docker/image.tar
  
 test:
   post:
-    - docker run baseboxorg/cpuminer-xzc --cputest
+    - docker run baseboxorg/cpuminer-xzc:rpi2 --cputest
     
 deployment:
   hub:
     branch: rpi2
     commands:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-      - docker push baseboxorg/cpuminer-xzc
+      - docker push baseboxorg/cpuminer-xzc:rpi2
